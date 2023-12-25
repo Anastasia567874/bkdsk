@@ -4,11 +4,11 @@
 
 Для начала заходим в настройки машины А, переходим во вкладку сеть. Сначала нам нужно предоставить доступ в интеренет. ВЫбираем 1 адаптер, тип подключения - NAT. Именно данный вид подключения даст доступ к сети Интернет. NAT изолирует виртуальную машину от внешних соединений. Все запросы проходят через хост-систему, так мы и получим доступ в Интернет. 
 
-![image](https://github.com/cs-itmo-2023/lab-3-Andrzakourcev/assets/144477949/e8247954-e32c-41a6-9f2d-17e2aa967571)
+![image](https://github.com/Anastasia567874/bkdsk/blob/main/image/a1.jpg)
 
 Теперь проверим, если ли доступ в сеть. Для этого используется команда ping, которая позволяет отправлять запросы по ip-адресу. Попробуем подключиться к ip-адресу google. 172.217.22.14
 
-![image](https://github.com/cs-itmo-2023/lab-3-Andrzakourcev/assets/144477949/8ddb7095-a4bb-407f-8798-a9c9e37779db)
+![image](https://github.com/Anastasia567874/bkdsk/blob/main/image/a2.jpg)
 
 Подключение работает. Все пакеты дошли.
 
@@ -17,7 +17,7 @@
 Создаем машину B. 
 Заходим в настройки - сеть. Выбираем 1 адаптер, тип подключения - Внутренняя сеть (Internal Network). Выбираем имя - LAN1. У машины A делаем то же самое на 2 адаптере (1 уже занят). 
 
-![image](https://github.com/cs-itmo-2023/lab-3-Andrzakourcev/assets/144477949/5f6d3186-0e38-42f5-98c0-664a8cab4326)
+![image](https://github.com/Anastasia567874/bkdsk/blob/main/image/a3.jpg)
 
 # Теперь проверим поключение машин A и B.
 
@@ -25,7 +25,7 @@
 ```
 ip a
 ```
-![image](https://github.com/cs-itmo-2023/lab-3-Andrzakourcev/assets/144477949/cd43aa16-c97b-4a38-932b-61cceba8d9a3)
+![image](https://github.com/Anastasia567874/bkdsk/blob/main/image/a4.jpg)
 
 На экране несколько сетей. Первый интерфейс это loopback. Он есть на каждом устройстве, и на каждом устройстве у него ip 127.0.0.1. Это способ хоста обратиться к самому себе же. enp0s3 - это есть сеть для выхода в интернет, enp0s8 - наша локальная сеть между машинами А и B. Дальше с помощью данной команды мы добавим ip-адрес для нашего подключения.
 
@@ -34,7 +34,7 @@ ip a
 sudo ip addr add 192.168.1.1/255.255.255.0 dev enp0s8
 
 ```
-![image](https://github.com/cs-itmo-2023/lab-3-Andrzakourcev/assets/144477949/fded338c-24e5-48ad-af45-5f42678d707d)
+![image](https://github.com/Anastasia567874/bkdsk/blob/main/image/a5.jpg)
 
 Теперь делаем то же самое на машине B, но меняем номер машины в сети на второй - 192.168.1.2, а enp0s8 на enp0s3.
 
@@ -51,7 +51,7 @@ sudo ip addr add 192.168.1.1/255.255.255.0 dev enp0s8
 ping 192.168.1.2
 ```
 
-![image](https://github.com/cs-itmo-2023/lab-3-Andrzakourcev/assets/144477949/d81856a9-73cb-47b4-8d91-b2d82fe55bce)
+![image](https://github.com/Anastasia567874/bkdsk/blob/main/image/a6.jpg)
 
 
 На машине B
@@ -59,7 +59,7 @@ ping 192.168.1.2
 ```
 ping 192.168.1.1
 ```
-![image](https://github.com/cs-itmo-2023/lab-3-Andrzakourcev/assets/144477949/3b715eb7-9ab4-4107-9906-2ff06ca0855c)
+![image](https://github.com/Anastasia567874/bkdsk/blob/main/image/a7.jpg)
 
 Как можно заметить, все работает в обе стороны.
 
@@ -67,49 +67,49 @@ ping 192.168.1.1
 
 Создадим машину C. В настройках сети машины A выберем 3 адаптер, тип подключения - Внутренняя сеть. Название - LAN2. 
 
-![image](https://github.com/cs-itmo-2023/lab-3-Andrzakourcev/assets/144477949/daaf9432-3981-4407-9685-9777fbe90c57)
+![image](https://github.com/Anastasia567874/bkdsk/blob/main/image/a8.jpg)
 
 У машины C то же самое, в 1 адаптере 
 
-![image](https://github.com/cs-itmo-2023/lab-3-Andrzakourcev/assets/144477949/eda8435a-4ff0-4a10-8512-1dad37600a5a)
+![image](https://github.com/Anastasia567874/bkdsk/blob/main/image/a9.jpg)
 
 Теперь проделывааем те же действия, что и для подключения машин A и B. Меняем лишь ip на 192.168.2.1, тк это наша 2 подсеть.
 
 Добавляем порт с нужным ip в машине A для enp0s9.
 
-![image](https://github.com/cs-itmo-2023/lab-3-Andrzakourcev/assets/144477949/d441003b-7d66-40b9-adb0-ff75ebf7f9aa)
+![image](https://github.com/Anastasia567874/bkdsk/blob/main/image/a10.jpg)
 
 
 Для машины C ip - 192.168.2.2
 
-![image](https://github.com/cs-itmo-2023/lab-3-Andrzakourcev/assets/144477949/ef338e9b-b924-4276-8b16-890c03708fdc)
+![image]([https://github.com/Anastasia567874/bkdsk/blob/main/image/a14.jpg](https://github.com/Anastasia567874/bkdsk/blob/main/image/a11.jpg))
 
 
 # Теперь проверим работу машин A и C
 
 Машина A:
 
-![image](https://github.com/cs-itmo-2023/lab-3-Andrzakourcev/assets/144477949/37ecf06e-de27-4cb3-ab77-f8270ee15b7d)
+![image](https://github.com/Anastasia567874/bkdsk/blob/main/image/a12.jpg)
 
 
 Машина С:
 
-![image](https://github.com/cs-itmo-2023/lab-3-Andrzakourcev/assets/144477949/6ae28199-658a-4559-9ca1-1545e7807f32)
+![image](https://github.com/Anastasia567874/bkdsk/blob/main/image/a13.jpg)
 
 # Проверка отсутствия соединения между машинами B и C
 Попробуем с помощью ping проверить соединение между B и С.
 
 От B к C:
 
-![image](https://github.com/cs-itmo-2023/lab-3-Andrzakourcev/assets/144477949/32053ecf-b51e-45e3-9c71-ff8dd686f7be)
+![image](https://github.com/Anastasia567874/bkdsk/blob/main/image/a14.jpg)
 
 От C к B:
 
-![image](https://github.com/cs-itmo-2023/lab-3-Andrzakourcev/assets/144477949/16c220a4-13f7-47d5-bb0d-114916c37403)
+![image](https://github.com/Anastasia567874/bkdsk/blob/main/image/a15.jpg)
 
 Как мы видим, подключение отсутствует.
 
 # Все три терминала вместе:
 
-![image](https://github.com/cs-itmo-2023/lab-3-Andrzakourcev/assets/144477949/371a4b0f-8ce6-4393-b7ad-104709903481)
+![image](https://github.com/Anastasia567874/bkdsk/blob/main/image/a16.jpg)
 
